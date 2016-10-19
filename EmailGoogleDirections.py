@@ -10,15 +10,14 @@ from email.MIMEBase import MIMEBase
 from email import encoders
    
 
-#origin=
-#destination= 
-home = '11156+Matthew+Ln,+Hartland+MI+48353'
-work = '160+E+Congress+St,+Detroit+MI+48226'   
+#Convert ' ' to '+' in address, or use Lat,long
+home = 'Home Address'
+work = 'Work Address'   
 
 def sendMail(to, subject, body, attach):
    #email vars
-   g_user = '11156matthew@gmail.com'
-   g_pw = 'piratescb3'
+   g_user = 'email@gmail.com'
+   g_pw = 'password'
    msg = MIMEMultipart()
    msg['From'] = g_user
    msg['To'] = to
@@ -159,8 +158,8 @@ def buildHtml(dHTML):
 #Based on time of day, send email.
 print time.strftime('%p')
 if time.strftime('%p') == 'AM':
-   sendMail('petelapczynski@gmail.com', 'Driving Directions', buildHtml(googleDirections(home, work)), '')
+   sendMail('email@gmail.com', 'Driving Directions', buildHtml(googleDirections(home, work)), '')
 else:
-   sendMail('petelapczynski@gmail.com', 'Driving Directions', buildHtml(googleDirections(work, home)), '')
+   sendMail('email@gmail.com', 'Driving Directions', buildHtml(googleDirections(work, home)), '')
 
 print 'Complete'
