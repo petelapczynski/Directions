@@ -9,7 +9,15 @@ from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 
+#####
+#     User needs to update address variables (home, work),
+#     sending email address and password in function sendMail,
+#     API keys in function googleDirections, 
+#     and send to emails in last if statement.
+#####
+
 #Convert ' ' to '+' in address, or use Lat,long
+#Update Addresses#
 home = 'Home Address'
 work = 'Work Address'   
 
