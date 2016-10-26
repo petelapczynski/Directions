@@ -37,6 +37,7 @@ def sendMail(to, subject, body, attach):
 #End sendmail
 
 def googleDirections(orig, dest):
+   #Google Maps Directions API call 
    #Google API key
    api_key = ''
    #static maps API key
@@ -124,7 +125,7 @@ def buildHtml(dHTML):
       <div style="Margin-left: 20px;Margin-right: 20px;">
         <div style="font-size: 12px;font-style: normal;font-weight: normal;Margin-bottom: 20px;" align="center">
 			<div id="gmap_display" style="height:100%; width:100%;max-width:100%;">
-           <img style="border: 0;display: block;height: 250px;width: 400px;max-width: 600px;"  frameborder="0" src=""" + '"' + dHTML['mapurl'] + '"' + """>
+           <a href=""" + '"' + dHTML['buttonurl'] + '"' + """><img style="border: 0;display: block;height: 250px;width: 400px;max-width: 600px;"  frameborder="0" src=""" + '"' + dHTML['mapurl'] + '"' + """></a>
 			</div>
 		  </div>
       </div>
@@ -134,7 +135,7 @@ def buildHtml(dHTML):
       </div>
       
       <div style="Margin-left: 20px;Margin-right: 20px;">
-        <h1 style="Margin-top: 0;Margin-bottom: 0;font-weight: normal;font-family: &quot;Open Sans&quot;,sans-serif;">Your Commute: """ + dHTML['summary'] + '</h1>' + dHTML['path'] + """</div>
+        <h2 style="Margin-top: 0;Margin-bottom: 0;font-weight: normal;font-family: &quot;Open Sans&quot;,sans-serif;">""" + dHTML['summary'] + '</h2>' + dHTML['path'] + """</div>
         <div style="Margin-top: 20px; Margin-bottom: 20px;">
          <a style="border-radius: 20px;display: inline-block;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;color: #fff;background-color: #47805e;font-family: Merriweather, Georgia, serif;" href=""" + '"' + dHTML['buttonurl'] + '"' + """>View Full Screen</a>
         </div>
@@ -156,8 +157,8 @@ def buildHtml(dHTML):
 #Based on time of day, send email.
 print time.strftime('%p')
 if time.strftime('%p') == 'AM':
-   sendMail('email@gmail.com', 'Driving Directions', buildHtml(googleDirections(home, work)), '')
+   sendMail('email@gmail.com', 'Your AM Driving Directions', buildHtml(googleDirections(home, work)), '')
 else:
-   sendMail('email@gmail.com', 'Driving Directions', buildHtml(googleDirections(work, home)), '')
+   sendMail('email@gmail.com', 'Your PM Driving Directions', buildHtml(googleDirections(work, home)), '')
 
 print 'Complete'
